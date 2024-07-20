@@ -70,3 +70,16 @@ No arquivo `vpc.tf` vamos **criar 3 resources**, o primeiro será para criar o *
 ![img_3.png](readme_images/img_3.png)
 
 ---
+
+### Criando Security Group
+
+O **Security Group** servirá para proteger o _**acesso direto**_ na nossa aplicação na internet, mas permitirá que nossa aplicação
+tenha acesso total na internet.
+
+Para isso, **vamos configurar o** `cluster.tf`:
+![img_4.png](readme_images/img_4.png)
+
+Execute o comando: `terraform apply --auto-approve` e cheque na aba `Security Groups` no **Console da AWS**:
+![img_5.png](readme_images/img_5.png)
+
+---
