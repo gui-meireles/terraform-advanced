@@ -39,8 +39,24 @@ Você verá que foi criada a **VPC** no seu **Console AWS:**
 
 ---
 
-### Criando Subnets
+### Criando Subnets estáticas
 
 Para criar **subnets**, utilize o `vpc.tf` e nele vamos criar um resource de _**aws_subnet**_.
 
 Após criado o **resource**, basta executar o comando: `terraform apply --auto-approve` e checar no **Console AWS** as subnets.
+
+> Para deixar as subnets com as tags mais flexíveis, podemos utilizar o `variables.tf` e o `terraform.tfvars` para **criar a
+variável** `prefix`:
+![img_1.png](readme_images/img_1.png)
+
+### Criando Subnets dinâmicas
+
+***Obs:** Caso você tenha criado a subnet estática acima, **comente todos os resources referente a subnet** no `vpc.tf`,
+execute o comando: `terraform apply --auto-approve` e **descomente a parte da subnet dinâmica**.
+
+> **Lembre-se**, você não conseguirá rodar as subnets dinâmicas e estáticas juntas.
+
+No arquivo `vpc.tf` vamos **criar um resource dinâmico** como a imagem e **comentar os que foram criados** acima:
+![img_2.png](readme_images/img_2.png)
+
+Execute o comando: `terraform apply --auto-approve` e confirme no **Console AWS**.
