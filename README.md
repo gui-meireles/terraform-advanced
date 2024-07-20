@@ -8,7 +8,33 @@ O conceito de **VPC** (Virtual Private Cloud) é uma **rede virtual na nuvem** q
 Através do VPC, é possível **definir sub-redes**, **tabelas de roteamento**, **gateways de internet** e regras de segurança para
 controlar o tráfego de entrada e saída dos recursos hospedados na nuvem.
 
->**Para entender mais sobre VPC**, veja o módulo `Criando cluster Kubernetes` no curso
+>**Para entender mais sobre VPC e console AWS**, veja o módulo `Criando cluster Kubernetes` no curso
 de **Terraform** do Full Cycle.
 
-**🚧 Em construção...**
+---
+
+### Configurarção inicial da AWS
+
+Crie um usuário **admin** e uma **chave de acesso**.
+
+Baixe o **AWS CLI** e digite no terminal: `aws configure` e informe a chave de acesso. (Utilize a região: `us-east-1`)
+
+---
+
+### Criando VPC
+
+Vamos criar uma **VPC com o Terraform**, mas antes, precisamos adicionar o provider da AWS no Terraform, para isso
+utilizaremos o arquivo `providers.tf`.
+
+Para rodá-lo, utilize o comando: `terraform init`.
+
+No arquivo `vpc.tf` vamos criar a configuração da VPC.
+
+> Para saber mais sobre a documentação do provider da AWS, abra: https://registry.terraform.io/providers/hashicorp/aws
+
+Com o arquivo `vpc.tf` criado, vamos executar os comandos: `terraform plan` e logo após: `terraform apply` e digite **yes**.
+
+Você verá que foi criada a **VPC** no seu **Console AWS:**
+![img.png](readme_images/img.png)
+
+---
