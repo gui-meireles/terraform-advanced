@@ -12,7 +12,7 @@ output "az" {
   value = "${data.aws_availability_zones.available.names}"
 }
 
-// Criar subnets dinâmicas
+// Criando subnets dinâmicas
 resource "aws_subnet" "subnets" {
   count = 2 // Quantidade de subnets que serão criadas
   availability_zone = data.aws_availability_zones.available.names[count.index] // AZ's dinâmicas de acordo com a quantidade de subnets acima
@@ -24,7 +24,34 @@ resource "aws_subnet" "subnets" {
   }
 }
 
-// Criar subnet estática 1
+// Criando Internet Gateway
+resource "aws_internet_gateway" "new-igw" {
+  vpc_id = aws_vpc.new-vpc.id
+  tags = {
+    Name = "${var.prefix}-igw"
+  }
+}
+
+// Criando Route Table
+resource "aws_route_table" "new-rtb" {
+  vpc_id = aws_vpc.new-vpc.id
+  route {
+    cidr_block = "0.0.0.0/0" // Todas subnets que forem colocadas dentro dessa Route Table terá acesso total a internet
+    gateway_id = aws_internet_gateway.new-igw.id
+  }
+  tags = {
+    Name = "${var.prefix}-rtb"
+  }
+}
+
+// Associando Subnets na Route Table de forma dinâmica
+resource "aws_route_table_association" "new-rtb-association" {
+  count = 2
+  route_table_id = aws_route_table.new-rtb.id
+  subnet_id = aws_subnet.subnets.*.id[count.index]
+}
+
+// Criando subnet estática 1
 #resource "aws_subnet" "new-subnet-1" {
 #  availability_zone = "us-east-1a"
 #  vpc_id = aws_vpc.new-vpc.id
@@ -34,7 +61,7 @@ resource "aws_subnet" "subnets" {
 #  }
 #}
 
-// Criar subnet estática 2
+// Criando subnet estática 2
 #resource "aws_subnet" "new-subnet-2" {
 #  availability_zone = "us-east-1b"
 #  vpc_id = aws_vpc.new-vpc.id

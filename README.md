@@ -60,3 +60,13 @@ No arquivo `vpc.tf` vamos **criar um resource dinâmico** como a imagem e **come
 ![img_2.png](readme_images/img_2.png)
 
 Execute o comando: `terraform apply --auto-approve` e confirme no **Console AWS**.
+
+---
+
+### Criando Internet Gateway e Route Table
+
+No arquivo `vpc.tf` vamos **criar 3 resources**, o primeiro será para criar o **Internet Gateway**, o segundo para criar a
+**Route Table** e o terceiro para **associar as subnets na Route Table**.
+![img_3.png](readme_images/img_3.png)
+
+---
