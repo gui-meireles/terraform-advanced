@@ -83,3 +83,15 @@ Execute o comando: `terraform apply --auto-approve` e cheque na aba `Security Gr
 ![img_5.png](readme_images/img_5.png)
 
 ---
+
+### Criando Role e Policies
+
+Vamos **liberar permissões para o nosso Cluster**, como por exemplo **_Auto Scaling_**, criar **_EC2_**, **_ELB_**, entre outros.
+
+Para isso, no `cluster.tf`, vamos criar a **Role** e em seguida as **2 policies necessárias**:
+![img_6.png](readme_images/img_6.png)
+
+Execute o comando: `terraform apply --auto-approve` e cheque na aba `IAM/Funções` no **Console da AWS**:
+![img_7.png](readme_images/img_7.png)
+
+---
