@@ -32,9 +32,15 @@ No arquivo `vpc.tf` vamos criar a configuração da VPC.
 
 > Para saber mais sobre a documentação do provider da AWS, abra: https://registry.terraform.io/providers/hashicorp/aws
 
-Com o arquivo `vpc.tf` criado, vamos executar os comandos: `terraform plan` e logo após: `terraform apply` e digite **yes**.
+Com o arquivo `vpc.tf` criado, vamos executar os comandos: `terraform plan` e logo após: `terraform apply --auto-approve`.
 
 Você verá que foi criada a **VPC** no seu **Console AWS:**
 ![img.png](readme_images/img.png)
 
 ---
+
+### Criando Subnets
+
+Para criar **subnets**, utilize o `vpc.tf` e nele vamos criar um resource de _**aws_subnet**_.
+
+Após criado o **resource**, basta executar o comando: `terraform apply --auto-approve` e checar no **Console AWS** as subnets.
