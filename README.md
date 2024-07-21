@@ -95,3 +95,15 @@ Execute o comando: `terraform apply --auto-approve` e cheque na aba `IAM/Funçõ
 ![img_7.png](readme_images/img_7.png)
 
 ---
+
+### Subindo Cluster EKS
+
+**Com todas as configurações feitas**, podemos subir o `Cluster EKS`, para isso, vamos criar _**2 resources**_.
+
+O primeiro para **salvar os logs** do nosso Cluster e o segundo para **criar o Cluster na AWS**.
+![img_8.png](readme_images/img_8.png)
+
+Execute o comando: `terraform apply --auto-approve` e aguarde a inicialização do Cluster.
+
+Você pode visualizar a criação do Cluster na aba `EKS/Clusters` no **Console da AWS**:
+![img_9.png](readme_images/img_9.png)
