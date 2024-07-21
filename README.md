@@ -188,6 +188,13 @@ Abra em seu navegador: `localhost:8181` e deverá aparecer:
 
 ## Iniciando com Módulos
 
-Os módulos agrupam vários resources em um lugar só.
+Os módulos agrupam vários resources em um lugar só, ele é muito útil quando trabalhamos com muitos resources.
 
-Para essa aula, vamos utilizar a branch: `modules`.
+Dentro da pasta `modules/vpc` serão configurados as VPC, Subnets, Internet Gateway, Route Table, entre outros.
+
+Ainda na pasta `modules/vpc`, teremos o arquivo `main.tf` que será o responsável por todos os resources, no arquivo
+`outputs.tf` mostrará todos os resultados que vamos precisar e no arquivo `variables.tf` colocaremos as variáveis.
+
+Vamos passar todas as informações do arquivo `vpc.tf` para o `modules/vpc/main.tf` e delete o arquivo: `vpc.tf`.
+
+Passe também a **_var.prefix_** do `variables.tf` para o `modules/vpc/variables.tf`.
