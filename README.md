@@ -183,3 +183,11 @@ Abra em seu navegador: `localhost:8181` e deverá aparecer:
 ### Excluir todas as configurações do Terraform
 
 **Para excluir todas as configurações** de `VPC, IAM, EC2, EKS`, utilize o comando: `terraform destroy`.
+
+---
+
+## Iniciando com Módulos
+
+Os módulos agrupam vários resources em um lugar só.
+
+Para essa aula, vamos utilizar a branch: `modules`.
