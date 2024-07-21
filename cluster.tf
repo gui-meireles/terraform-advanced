@@ -15,7 +15,7 @@ resource "aws_security_group" "sg" {
   }
 }
 
-// Criando role
+// Criando role para dar permissoes ao cluster criar um serviço EKS
 resource "aws_iam_role" "cluster" {
   name = "${var.prefix}-${var.cluster_name}-role"
   assume_role_policy = <<POLICY
@@ -59,7 +59,7 @@ resource "aws_eks_cluster" "cluster" {
   enabled_cluster_log_types = ["api", "audit"]   // Tipos de logs para salvar
 
   vpc_config {
-    subnet_ids = aws_subnet.subnets[*].id           // Adiciona todas as subnets que foram criadas acima
+    subnet_ids = aws_subnet.subnets[*].id           // Adiciona as subnets que foram criadas no arquivo vpc.tf
     security_group_ids = [aws_security_group.sg.id] // Adiciona o security group que permite o acesso total do Cluster na internet
   }
 

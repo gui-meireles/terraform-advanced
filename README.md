@@ -43,7 +43,7 @@ Você verá que foi criada a **VPC** no seu **Console AWS:**
 
 Para criar **subnets**, utilize o `vpc.tf` e nele vamos criar um resource de _**aws_subnet**_.
 
-Após criado o **resource**, basta executar o comando: `terraform apply --auto-approve` e checar no **Console AWS** as subnets.
+Após criado o **resource**, basta executar o comando: `terraform apply --auto-approve` e confirme na aba `VPC/Subnets` no **Console AWS**.
 
 > Para deixar as subnets com as tags mais flexíveis, podemos utilizar o `variables.tf` e o `terraform.tfvars` para **criar a
 variável** `prefix`:
@@ -59,7 +59,7 @@ execute o comando: `terraform apply --auto-approve` e **descomente a parte da su
 No arquivo `vpc.tf` vamos **criar um resource dinâmico** como a imagem e **comentar os que foram criados** acima:
 ![img_2.png](readme_images/img_2.png)
 
-Execute o comando: `terraform apply --auto-approve` e confirme no **Console AWS**.
+Execute o comando: `terraform apply --auto-approve` e confirme na aba `VPC/Subnets` no **Console AWS**.
 
 ---
 
@@ -68,6 +68,9 @@ Execute o comando: `terraform apply --auto-approve` e confirme no **Console AWS*
 No arquivo `vpc.tf` vamos **criar 3 resources**, o primeiro será para criar o **Internet Gateway**, o segundo para criar a
 **Route Table** e o terceiro para **associar as subnets na Route Table**.
 ![img_3.png](readme_images/img_3.png)
+
+Execute o comando: `terraform apply --auto-approve` e confirme na aba `VPC/Internet Gateway` e `VPC/Route Table`
+no **Console da AWS**.
 
 ---
 
@@ -79,7 +82,7 @@ tenha acesso total na internet.
 Para isso, **vamos configurar o** `cluster.tf`:
 ![img_4.png](readme_images/img_4.png)
 
-Execute o comando: `terraform apply --auto-approve` e cheque na aba `Security Groups` no **Console da AWS**:
+Execute o comando: `terraform apply --auto-approve` e cheque na aba `VPC/Security Groups` no **Console da AWS**:
 ![img_5.png](readme_images/img_5.png)
 
 ---
@@ -91,7 +94,7 @@ Vamos **liberar permissões para o nosso Cluster**, como por exemplo **_Auto Sca
 Para isso, no `cluster.tf`, vamos criar a **Role** e em seguida as **2 policies necessárias**:
 ![img_6.png](readme_images/img_6.png)
 
-Execute o comando: `terraform apply --auto-approve` e cheque na aba `IAM/Funções` no **Console da AWS**:
+Execute o comando: `terraform apply --auto-approve` e cheque na aba `IAM/Roles` no **Console da AWS**:
 ![img_7.png](readme_images/img_7.png)
 
 ---
@@ -107,3 +110,26 @@ Execute o comando: `terraform apply --auto-approve` e aguarde a inicialização 
 
 Você pode visualizar a criação do Cluster na aba `EKS/Clusters` no **Console da AWS**:
 ![img_9.png](readme_images/img_9.png)
+
+---
+
+### Criando Workers para o Cluster
+
+Vamos criar os `nós/nodes/workers` do **Cluster** e para isso utilizaremos o arquivo `node.tf`.
+
+Antes de tudo, **criaremos uma role** para que os `nós/nodes/workers` tenham permissão no **EC2**.
+![img_10.png](readme_images/img_10.png)
+
+Agora vamos adicionar as **policies** na **Role** dos `nodes`:
+![img_12.png](readme_images/img_12.png)
+
+Execute o comando: `terraform apply --auto-approve` e confirme na aba `IAM/Roles` no **Console AWS**:
+![img_11.png](readme_images/img_11.png)
+
+Com isso feito, vamos **criar o resource** do `node`:
+![img_13.png](readme_images/img_13.png)
+
+Execute o comando novamente: `terraform apply --auto-approve` e confirme na aba `Clusters` no **Console AWS**:
+![img_14.png](readme_images/img_14.png)
+
+---
