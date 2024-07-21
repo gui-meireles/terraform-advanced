@@ -188,6 +188,6 @@ Abra em seu navegador: `localhost:8181` e deverá aparecer:
 
 ## Iniciando com Módulos
 
-Os módulos agrupam vários resources em um lugar só.
+Os módulos agrupam vários resources em um só lugar para facilitar a criação de resources.
 
-Para essa aula, vamos utilizar a branch: `modules`.
+Para esse conteúdo, mude para a branch: `modules`.
