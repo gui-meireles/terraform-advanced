@@ -22,7 +22,7 @@ Baixe o **AWS CLI** e digite no terminal: `aws configure` e informe a chave de a
 ### *Importante:
 
 Saiba que ao criar um `EKS ou EC2` na AWS vai te **gerar custos**, caso queira criar, **lembre-se sempre de excluí-los**
-para não gerar custos adicionais, para isso basta comentar todos os resources relacionados ao `EKS e EC2` e verificar no
+e **para excluir todas as configurações** que foram criadas, utilize o comando: `terraform destroy` e verifique no
 **console da AWS**.
 
 ---
@@ -164,3 +164,22 @@ Após isso, **substitua o arquivo** da pasta `.kube/config` com o comando: `cp k
 Ao rodar o comando: `kubectl get nodes` você terá os nós/nodes/workers que subimos na AWS.
 
 ---
+
+### Criando deploy
+
+Com o Cluster e os nodes configurados, vamos criar um deploy simples de uma imagem do nginx, para isso:
+
+Execute o comando: `kubectl create deploy nginx --image=nginx`.
+
+Confirme se o pod foi criado com: `kubectl get pods`.
+
+Para testar, direcione a porta do nginx com: `kubectl port-forward pod/{nome_pod} 8181:80`.
+
+Abra em seu navegador: `localhost:8181` e deverá aparecer:
+![img_17.png](readme_images/img_17.png)
+
+---
+
+### Excluir todas as configurações do Terraform
+
+**Para excluir todas as configurações** de `VPC, IAM, EC2, EKS`, utilize o comando: `terraform destroy`.
