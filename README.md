@@ -229,3 +229,23 @@ Na raiz do projeto, teremos o arquivo `main.tf` , que será o **responsável por
 Execute o comando: `terraform init` para que o Terraform reconheça os módulos.
 
 Execute o comando: `terraform plan` e em seguida: `terraform apply --auto-approve` para **criar e subir** todas as configurações na AWS.
+
+---
+
+## Sobre o tfstate
+
+O `terraform.tfstate` é um arquivo importantíssimo quando falamos de Terraform, pois ele contém todas as informações de versões, ids, entre outros.
+
+E para que não haja **conflitos de versionamento** ou **perda** desse arquivo quando estamos trabalhando em equipe, vamos centralizá-lo
+no `S3` da AWS.
+
+Para isso, vamos adicionar o código abaixo no arquivo `main.tf`:
+![img_19.png](readme_images/img_19.png)
+
+No console da AWS, vamos criar um **S3** com o nome `myfcbucket`, lembre-se de deixar a opção `Block all public access` tickada,
+e ative a opção `Bucket Versioning`.
+
+Depois de criado, vamos rodar o comando: `terraform init` e **yes**:
+![img_20.png](readme_images/img_20.png)
+
+O arquivo será criado no S3 e com isso podemos apagar o `terraform.tfstate` e `terraform.tfstate.backup` que está no projeto local.
