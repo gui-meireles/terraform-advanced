@@ -32,6 +32,7 @@ resource "aws_iam_role_policy_attachment" "node-AmazonEC2ContainerRegistryReadOn
   role       = aws_iam_role.node.name
 }
 
+// Criando Node Group com instâncias t2.micro
 resource "aws_eks_node_group" "node-1" {
   cluster_name    = aws_eks_cluster.cluster.name // Pega o nome do cluster do arquivo cluster.tf
   node_group_name = "node-1"
@@ -44,6 +45,8 @@ resource "aws_eks_node_group" "node-1" {
     max_size     = var.max_size     // Tamanho máximo
     min_size     = var.min_size     // Tamanho mínimo
   }
+
+  instance_types = ["t2.micro"] // Veja qual instância EC2 está como FREE TIER
 
   // Adiciona as dependências que o Node necessita para trabalhar
   depends_on = [

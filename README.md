@@ -132,4 +132,10 @@ Com isso feito, vamos **criar o resource** do `node`:
 Execute o comando novamente: `terraform apply --auto-approve` e confirme na aba `Clusters` no **Console AWS**:
 ![img_14.png](readme_images/img_14.png)
 
+**Importante:**
+
+Ao criar um **resource** de `Node Group`, sempre adicione o `instance_types` e coloque o tipo de instância que estiver
+como **FREE TIER** no momento, você pode checar em: https://aws.amazon.com/pt/free
+![img_15.png](readme_images/img_15.png)
+
 ---
