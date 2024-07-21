@@ -186,15 +186,27 @@ Abra em seu navegador: `localhost:8181` e deverá aparecer:
 
 ---
 
-## Iniciando com Módulos
+# Iniciando com Módulos
 
-Os módulos agrupam vários resources em um lugar só, ele é muito útil quando trabalhamos com muitos resources.
+Os **módulos** agrupam vários resources em um lugar só, ele é muito útil quando trabalhamos com muitos resources.
 
-Dentro da pasta `modules/vpc` serão configurados as VPC, Subnets, Internet Gateway, Route Table, entre outros.
+## Pasta `modules/vpc`
 
-Ainda na pasta `modules/vpc`, teremos o arquivo `main.tf` que será o responsável por todos os resources, no arquivo
-`outputs.tf` mostrará todos os resultados que vamos precisar e no arquivo `variables.tf` colocaremos as variáveis.
+Nela serão configurados as VPC, Subnets, Internet Gateway, Route Table, entre outros.
+
+Teremos o arquivo `main.tf` que será o responsável por todos os resources, no arquivo `outputs.tf` mostrará todos os
+resultados que vamos precisar e no arquivo `variables.tf` colocaremos as variáveis.
 
 Vamos passar todas as informações do arquivo `vpc.tf` para o `modules/vpc/main.tf` e delete o arquivo: `vpc.tf`.
 
 Passe também a **_var.prefix_** do `variables.tf` para o `modules/vpc/variables.tf`.
+
+## Pasta `modules/eks`
+
+Nela serão configurados o Cluster e os Nodes.
+
+Seguindo a ordem, teremos todos os **resources** do arquivo `cluster.tf` na `modules/eks/main.tf` e com isso podemos deletá-lo.
+
+Vamos criar as variáveis necessárias como: `vpc_id`, `prefix`, `retention_days`, `subnets_ids`, entre outros.
+
+Vamos passar também **toda a configuração** do arquivo `node.tf` para o `modules/eks/main.tf` e suas variáveis.
