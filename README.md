@@ -13,11 +13,17 @@ de **Terraform** do Full Cycle.
 
 ---
 
-### Configurarção inicial da AWS
+### Configuração inicial da AWS
 
 Crie um usuário **admin** e uma **chave de acesso**.
 
 Baixe o **AWS CLI** e digite no terminal: `aws configure` e informe a chave de acesso. (Utilize a região: `us-east-1`)
+
+### *Importante:
+
+Saiba que ao criar um `EKS ou EC2` na AWS vai te **gerar custos**, caso queira criar, **lembre-se sempre de excluí-los**
+para não gerar custos adicionais, para isso basta comentar todos os resources relacionados ao `EKS e EC2` e verificar no
+**console da AWS**.
 
 ---
 
