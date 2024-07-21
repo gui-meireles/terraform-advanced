@@ -223,3 +223,9 @@ Na raiz do projeto, teremos o arquivo `main.tf` , que será o **responsável por
 ![img_18.png](readme_images/img_18.png)
 
 **Obs:** Para exportar uma variável de um módulo para outro, é necessário criar um output no arquivo `outputs.tf`.
+
+### Subindo módulo
+
+Execute o comando: `terraform init` para que o Terraform reconheça os módulos.
+
+Execute o comando: `terraform plan` e em seguida: `terraform apply --auto-approve` para **criar e subir** todas as configurações na AWS.
