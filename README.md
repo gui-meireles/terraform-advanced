@@ -145,3 +145,22 @@ como **FREE TIER** no momento, você pode checar em: https://aws.amazon.com/pt/f
 ![img_15.png](readme_images/img_15.png)
 
 ---
+
+### Criando kubeconfig
+
+Para criar o arquivo **kubeconfig** e conseguir acessar o cluster pelo comando: `kubectl`, vamos utilizar o arquivo `outputs.tf`,
+nele passaremos a **configuração do kubernetes** da AWS, e utilizaremos o **resource** `local_file` para ele
+gerar esse arquivo do **kubeconfig** na nossa máquina.
+
+Execute o comando: `terraform apply --auto-approve` e você verá que um novo arquivo com nome `kubeconfig` foi criado.
+
+Agora, você precisará **baixar o aws-iam-authenticator**:
+
+> Caso esteja no Windows execute o comando: `choco install -y aws-iam-authenticator`
+![img_16.png](readme_images/img_16.png)
+
+Após isso, **substitua o arquivo** da pasta `.kube/config` com o comando: `cp kubeconfig ~/.kube/config`.
+
+Ao rodar o comando: `kubectl get nodes` você terá os nós/nodes/workers que subimos na AWS.
+
+---
