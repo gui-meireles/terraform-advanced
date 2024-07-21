@@ -209,4 +209,17 @@ Seguindo a ordem, teremos todos os **resources** do arquivo `cluster.tf` na `mod
 
 Vamos criar as variáveis necessárias como: `vpc_id`, `prefix`, `retention_days`, `subnets_ids`, entre outros.
 
-Vamos passar também **toda a configuração** do arquivo `node.tf` para o `modules/eks/main.tf` e suas variáveis.
+Vamos passar também **toda a configuração** do arquivo `node.tf` para o `modules/eks/main.tf` e suas variáveis e com isso podemos deletá-lo.
+
+Para finalizar, vamos colocar todo o código de `outputs.tf` (configuração do kubeconfig) em `modules/eks/outputs.tf`.
+
+---
+
+## Criando o módulo
+
+Na raiz do projeto, teremos o arquivo `main.tf` , que será o **responsável por iniciar os módulos** de `VPC e EKS`.
+
+> Nele passaremos o **path** que está os arquivos do `VPC e EKS` e os **valores de todas as variáveis**.
+![img_18.png](readme_images/img_18.png)
+
+**Obs:** Para exportar uma variável de um módulo para outro, é necessário criar um output no arquivo `outputs.tf`.
